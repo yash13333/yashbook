@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 8%;
+    --foreground: 40 30% 92%;
+
+    --card: 220 18% 12%;
+    --card-foreground: 40 30% 92%;
+
+    --popover: 220 18% 12%;
+    --popover-foreground: 40 30% 92%;
+
+    --primary: 40 60% 55%;
+    --primary-foreground: 220 20% 8%;
+
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 40 30% 85%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 40 60% 55%;
+    --accent-foreground: 220 20% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 40 60% 55%;
+
+    --radius: 0.5rem;
+
+    --page-cream: 40 40% 93%;
+    --page-shadow: 220 30% 5%;
+    --gold-glow: 40 80% 60%;
+
+    --sidebar-background: 220 18% 10%;
+    --sidebar-foreground: 40 30% 85%;
+    --sidebar-primary: 40 60% 55%;
+    --sidebar-primary-foreground: 220 20% 8%;
+    --sidebar-accent: 220 15% 16%;
+    --sidebar-accent-foreground: 40 30% 85%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 40 60% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .book-page {
+    background: hsl(var(--page-cream));
+    box-shadow: 
+      inset -3px 0 8px rgba(0,0,0,0.15),
+      inset 3px 0 8px rgba(0,0,0,0.05),
+      0 0 30px rgba(0,0,0,0.3);
+  }
+
+  .book-cover {
+    background: linear-gradient(135deg, hsl(220 18% 15%), hsl(220 20% 10%));
+    box-shadow: 
+      0 0 40px hsl(var(--gold-glow) / 0.15),
+      inset 0 0 60px rgba(0,0,0,0.3);
+    border: 2px solid hsl(var(--primary) / 0.3);
+  }
+
+  .gold-text {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--gold-glow)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .floating-particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: hsl(var(--primary) / 0.4);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .page-flip-right {
+    animation: flipRight 0.8s ease-in-out forwards;
+    transform-origin: left center;
+  }
+
+  .page-flip-left {
+    animation: flipLeft 0.8s ease-in-out forwards;
+    transform-origin: left center;
+  }
+}
+
+@keyframes flipRight {
+  0% { transform: perspective(1500px) rotateY(0deg); }
+  100% { transform: perspective(1500px) rotateY(-180deg); }
+}
+
+@keyframes flipLeft {
+  0% { transform: perspective(1500px) rotateY(-180deg); }
+  100% { transform: perspective(1500px) rotateY(0deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px hsl(var(--primary) / 0.2); }
+  50% { box-shadow: 0 0 40px hsl(var(--primary) / 0.4); }
+}
+
+@keyframes book3DFloat {
+  0% { transform: perspective(1200px) rotateY(-4deg) rotateX(2deg) translateY(0px); }
+  25% { transform: perspective(1200px) rotateY(2deg) rotateX(-1deg) translateY(-8px); }
+  50% { transform: perspective(1200px) rotateY(4deg) rotateX(2deg) translateY(0px); }
+  75% { transform: perspective(1200px) rotateY(-2deg) rotateX(-1deg) translateY(-6px); }
+  100% { transform: perspective(1200px) rotateY(-4deg) rotateX(2deg) translateY(0px); }
+}
+
+
+
+
+/* 
+.page {
+  background: white;
+  overflow: hidden;
+}
+
+.cover {
+  background: linear-gradient(135deg, #111, #333);
+  color: white;
+} */
+
+
+
+
+
+
+.book-container {
+  filter: drop-shadow(0 40px 50px rgba(0, 0, 0, 0.4));
+}
+
+.page {
+  background: white;
+  overflow: hidden;
+}
+
+.cover {
+  background: linear-gradient(135deg, #1a1a1a, #3a3a3a);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+}
+
+.cover-content h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.cover-content p {
+  opacity: 0.7;
+}
+
+.photo-page img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: white;
+}
+
+.back-cover {
+  background: linear-gradient(135deg, #111, #000);
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.book-container {
+  filter: drop-shadow(0 50px 60px rgba(0, 0, 0, 0.5));
+}
+
+/* Hardcover look */
+.cover {
+  position: relative;
+  overflow: hidden;
+  background: #111;
+}
+
+/* Beautiful romantic background */
+.cover-image {
+  position: absolute;
+  inset: 0;
+  background-image: url("/src/assets/photo1.jpg"); /* Change to your best photo */
+  background-size: cover;
+  background-position: center;
+  filter: blur(3px) brightness(0.6);
+  transform: scale(1.1);
+}
+
+/* Dark overlay */
+.cover-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 40px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.6),
+    rgba(0,0,0,0.8)
+  );
+}
+
+.cover-title {
+  font-size: 34px;
+  font-weight: bold;
+  background: linear-gradient(45deg, gold, #ffd700, #fff5cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+.cover-subtitle {
+  font-size: 16px;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
